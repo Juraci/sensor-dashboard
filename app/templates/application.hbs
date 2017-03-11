@@ -1,5 +1,8 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+{{#bs-navbar type='inverse' as |navbar|}}
+    <div class="navbar-header">
+        {{#link-to "index" class="navbar-brand"}}Sensor-dashboard{{/link-to}}
+    </div>
+{{/bs-navbar}}
+<div class='container'>
+  {{outlet}}
+</div>
