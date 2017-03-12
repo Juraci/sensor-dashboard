@@ -20,6 +20,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      sse: environment === 'production' ? 'https://nodemcu-listener.herokuapp.com/stream' : 'http://localhost:3000/stream'
     }
   };
 

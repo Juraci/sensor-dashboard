@@ -3,7 +3,8 @@
     "server",
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "EventSource"
   ],
   "browser": true,
   "boss": true,
