@@ -1,8 +1,14 @@
-{{#bs-navbar type='inverse' as |navbar|}}
-    <div class="navbar-header">
-        {{#link-to "index" class="navbar-brand"}}Sensor-dashboard{{/link-to}}
-    </div>
-{{/bs-navbar}}
-<div class='container'>
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    {{#paper-button iconButton=true}}
+      {{paper-icon "menu"}}
+    {{/paper-button}}
+    {{#link-to 'index'}}
+      <h2>Sensors Dashboard</h2>
+    {{/link-to}}
+    <span class="flex"></span>
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+<div class='main-content'>
   {{outlet}}
 </div>
