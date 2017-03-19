@@ -1,25 +1,25 @@
 $primary: 'dark';
-$accent: 'grey';
+$accent: 'light-dark';
 $warn: 'red';
-
 
 @import 'color-palette';
 
 $color-dark: (
-  '0': #e0e0e0,
-  '50': #bdbdbd,
-  '100': #9e9e9e,
-  '200': #757575,
-  '300': #616161,
-  '400': #424242,
-  '500': #212121,
-  '600': #000000,
-  '700': #ffffff,
-  '800': #eeeeee,
-  '900': #bdbdbd,
-  '1000': #616161,
-  'A100': #424242,
-  'contrast': $light-contrast-color
+    '50' : #a6a6a6,
+    '100' : #7f7f7f,
+    '200' : #636363,
+    '300' : #404040,
+    '400' : #303030,
+    '500' : #212121,
+    '600' : #121212,
+    '700' : #020202,
+    '800' : #000000,
+    '900' : #000000,
+    'A100' : #bd8484,
+    'A200' : #8e4d4d,
+    'A400' : #433232,
+    'A700' : #302b2b,
+    'contrast': #ffffff
 );
 
 $color-light-dark: (
@@ -38,9 +38,8 @@ $color-light-dark: (
 'A200' : #eb4a4a,
 'A400' : #ff0303,
 'A700' : #e90000,
-'contrast': $strong-light-contrast-color
+'contrast': #ffffff
 );
-
 
 $colors: map-merge($colors, (
 'dark': $color-dark,
@@ -52,4 +51,8 @@ $background: 'light-dark';
 
 body {
   background-color: #303030;
+};
+
+.light-text {
+  color: color($primary, 'contrast') !important;
 };
