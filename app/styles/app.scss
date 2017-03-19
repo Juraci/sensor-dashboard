@@ -1,29 +1,29 @@
-$primary: 'dark';
+$primary: 'netflix-dark';
 $accent: 'light-dark';
 $warn: 'red';
 
 @import 'color-palette';
 
-$color-dark: (
-    '50' : #a6a6a6,
-    '100' : #7f7f7f,
-    '200' : #636363,
-    '300' : #404040,
-    '400' : #303030,
-    '500' : #212121,
-    '600' : #121212,
-    '700' : #020202,
-    '800' : #000000,
-    '900' : #000000,
-    'A100' : #bd8484,
-    'A200' : #8e4d4d,
-    'A400' : #433232,
-    'A700' : #302b2b,
-    'contrast': #ffffff
+$color-netflix-dark: (
+'50' : #929292,
+'100' : #6b6b6b,
+'200' : #4f4f4f,
+'300' : #2c2c2c,
+'400' : #1c1c1c,
+'500' : #0d0d0d,
+'600' : #000000,
+'700' : #000000,
+'800' : #000000,
+'900' : #000000,
+'A100' : #af6a6a,
+'A200' : #743f3f,
+'A400' : #2c2121,
+'A700' : #1b1818,
+'contrast': #e50914
 );
 
 $color-light-dark: (
-  '0': #e0e0e0,
+'0': #e0e0e0,
 '50' : #e8e8e8,
 '100' : #c6c6c6,
 '200' : #a1a1a1,
@@ -42,7 +42,7 @@ $color-light-dark: (
 );
 
 $colors: map-merge($colors, (
-'dark': $color-dark,
+'netflix-dark': $color-netflix-dark,
 'light-dark': $color-light-dark
 ));
 
@@ -50,9 +50,10 @@ $background: 'light-dark';
 @import 'ember-paper';
 
 body {
-  background-color: #303030;
+  background-color: color($primary, '500');
 };
 
 .light-text {
-  color: color($primary, 'contrast') !important;
+  color: #a6a6a6 !important;
+  font-size: 1rem !important;
 };
