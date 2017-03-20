@@ -3,6 +3,7 @@ import Config from 'sensor-dashboard/config/environment';
 
 export default Ember.Service.extend({
   messages: null,
+  eventSource: new EventSource(Config.APP.sse),
 
   init() {
     this._super(...arguments);
@@ -10,7 +11,7 @@ export default Ember.Service.extend({
   },
 
   subscribe() {
-    const source = new EventSource(Config.APP.sse);
+    const source = this.get('eventSource');
     source.onmessage =  (e) => {
       if(e.data !== 'sse ready') {
         this.messages.unshiftObjects(e.data);
@@ -18,7 +19,11 @@ export default Ember.Service.extend({
     };
 
     source.onerror = (e) => {
-      Ember.Logger.error(`SSE error ${JSON.stringify(e)}`);
+      if (source.readyState === EventSource.CLOSED) {
+        return;
+      }
+
+      Ember.Logger.error(`SSE error ${e}`);
     };
   }
 });

@@ -5,8 +5,34 @@ moduleFor('service:sse-handler', 'Unit | Service | sse handler', {
   // needs: ['service:foo']
 });
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
+test('it should listen to the events and add them to the messages array', function(assert) {
+  const eventSource = {
+    onmessage: null,
+    onerror: null
+  };
+
+  let service = this.subject({
+    eventSource: eventSource
+  });
+
+  service.subscribe();
+
+  eventSource.onmessage({ id: 1, data: 'foo'});
+  assert.equal(service.get('messages.length'), 1);
+});
+
+test('it should ignore the sse ready event', function(assert) {
+  const eventSource = {
+    onmessage: null,
+    onerror: null
+  };
+
+  let service = this.subject({
+    eventSource: eventSource
+  });
+
+  service.subscribe();
+
+  eventSource.onmessage({ id: 1, data: 'sse ready'});
+  assert.equal(service.get('messages.length'), 0);
 });
