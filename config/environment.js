@@ -20,7 +20,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      sse: environment === 'production' ? 'https://nodemcu-listener.herokuapp.com/stream' : 'http://localhost:3000/stream'
+      sse: null
     }
   };
 
@@ -30,6 +30,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.sse = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -41,10 +42,12 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.APP.sse = 'http://localhost:3000';
   }
 
   if (environment === 'production') {
-
+    ENV.APP.sse = 'https://nodemcu-listener.herokuapp.com';
   }
 
   return ENV;
