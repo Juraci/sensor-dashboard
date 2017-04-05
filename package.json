@@ -37,7 +37,7 @@
     "ember-data": "^2.11.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.6.0",
-    "ember-paper": "1.0.0-alpha.18",
+    "ember-paper": "1.0.0-alpha.19",
     "ember-resolver": "^2.0.3",
     "ember-source": "~2.11.0",
     "loader.js": "^4.0.10"
