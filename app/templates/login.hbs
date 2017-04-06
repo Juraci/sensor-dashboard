@@ -1,0 +1,37 @@
+<div class='layout-row'>
+  <div class='flex-30 flex-offset-35 flex-offset-xs-10 flex-xs-80 login-form'>
+    {{#paper-card as |card|}}
+      {{#card.content}}
+        {{#paper-form as |form|}}
+          {{form.input
+            block=true
+            label='Email'
+            id='email'
+            required=true
+            type='email'
+            value=email
+            onChange=(route-action 'onEmailChange')
+            errors=inputErrors
+          }}
+          {{form.input
+            block=true
+            label='Password'
+            id='password'
+            required=true
+            type='password'
+            value=password
+            onChange=(route-action 'onPasswordChange')
+            errors=inputErrors
+          }}
+            <div class='layout-row layout-align-center'>
+              {{#if spinner}}
+                {{paper-progress-circular warn=true diameter=50}}
+              {{else}}
+                {{#paper-button id="login" onClick=(route-action 'login') disabled=form.isInvalid raised=true primary=true}}Login{{/paper-button}}
+              {{/if}}
+            </div>
+        {{/paper-form}}
+      {{/card.content}}
+    {{/paper-card}}
+  </div>
+</div>
