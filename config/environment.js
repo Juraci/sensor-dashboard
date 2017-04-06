@@ -18,9 +18,8 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-      sse: null
+      sse: null,
+      sensorsManagement: null,
     }
   };
 
@@ -31,6 +30,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.sse = 'http://localhost:3000';
+    ENV.APP.sensorsManagement = 'http://localhost:5000';
+    ENV['ember-cli-mirage'] = {
+          enabled: false
+    };
   }
 
   if (environment === 'test') {
@@ -44,10 +47,12 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
 
     ENV.APP.sse = 'http://localhost:3000';
+    ENV.APP.sensorsManagement = 'http://localhost:5000';
   }
 
   if (environment === 'production') {
     ENV.APP.sse = 'https://nodemcu-listener.herokuapp.com';
+    ENV.APP.sensorsManagement = 'https://sensors-management.herokuapp.com';
   }
 
   return ENV;
