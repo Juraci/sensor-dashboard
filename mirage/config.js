@@ -12,7 +12,7 @@ export default function() {
   this.urlPrefix = 'http://localhost:5000';
 
   this.post('/authenticate', () => {
-    return new Mirage.Response(200, { 'Content-Type': 'application/json' }, { success: true });
+    return new Mirage.Response(200, { 'Content-Type': 'application/json' }, { success: true, token: 'secret-token' });
   });
 
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server

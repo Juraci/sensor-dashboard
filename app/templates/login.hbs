@@ -2,6 +2,7 @@
   <div class='flex-30 flex-offset-35 flex-offset-sm-30 flex-sm-40 flex-offset-xs-10 flex-xs-80'>
     {{#paper-card class='login-form' as |card|}}
       {{#card.content}}
+        <h3>Sign In</h3>
         {{#paper-form as |form|}}
           {{form.input
             block=true
@@ -10,6 +11,7 @@
             required=true
             type='email'
             value=email
+            icon='email'
             onChange=(route-action 'onEmailChange')
             errors=inputErrors
           }}
@@ -20,6 +22,7 @@
             required=true
             type='password'
             value=password
+            icon='vpn-key'
             onChange=(route-action 'onPasswordChange')
             errors=inputErrors
           }}

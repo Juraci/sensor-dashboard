@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   authenticator: Ember.inject.service(),
+  sessionManager: Ember.inject.service(),
 
   actions: {
     didTransition() {
@@ -28,6 +29,7 @@ export default Ember.Route.extend({
           this.controller.set('spinner', false);
           Ember.Logger.warn(result);
           if(result.success) {
+            this.get('sessionManager').setToken(result.token);
             this.transitionTo('dashboard');
           }
         });
