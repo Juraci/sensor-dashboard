@@ -1,5 +1,5 @@
 <div class='layout-row'>
-  <div class='flex-30 flex-offset-35 flex-offset-sm-30 flex-sm-40 flex-offset-xs-10 flex-xs-80'>
+  <div class='flex-30 flex-offset-35 flex-offset-sm-30 flex-sm-40 flex-offset-xs-0 flex-xs-100'>
     {{#paper-card class='login-form' as |card|}}
       {{#card.content}}
         <h3>Sign In</h3>
@@ -13,7 +13,6 @@
             value=email
             icon='email'
             onChange=(route-action 'onEmailChange')
-            errors=inputErrors
           }}
           {{form.input
             block=true
@@ -24,7 +23,6 @@
             value=password
             icon='vpn-key'
             onChange=(route-action 'onPasswordChange')
-            errors=inputErrors
           }}
             <div class='layout-row layout-align-center'>
               {{#if spinner}}
@@ -36,5 +34,16 @@
         {{/paper-form}}
       {{/card.content}}
     {{/paper-card}}
+  </div>
+</div>
+<div class='layout-row'>
+  <div class='flex-30 flex-offset-35 flex-offset-sm-30 flex-sm-40 flex-offset-xs-0 flex-xs-100'>
+    {{#each flashMessages.queue as |flash|}}
+      {{#paper-card class='login-error' as |card|}}
+        {{#card.content}}
+          <div class='message'>{{flash-message flash=flash}}</div>
+        {{/card.content}}
+      {{/paper-card}}
+    {{/each}}
   </div>
 </div>

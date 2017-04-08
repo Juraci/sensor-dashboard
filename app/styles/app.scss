@@ -65,3 +65,11 @@ body, .main-content {
   margin-top: 10rem;
   background-color: color($accent, '100');
 };
+
+.login-error {
+  background-color: color($accent, '100');
+};
+
+.message {
+  color: color($primary, '500') !important;
+};

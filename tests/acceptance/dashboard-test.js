@@ -24,6 +24,7 @@ test('a user that enters a wrong password or email should see an login error', f
 
   andThen(function() {
     assert.equal(currentURL(), '/login');
+    assert.equal(find('.message').text().trim(), 'Incorrect email or password');
   });
 });
 
