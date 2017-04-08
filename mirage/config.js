@@ -1,4 +1,7 @@
+import Ember from 'ember';
 import Mirage from 'ember-cli-mirage';
+
+const { Logger } = Ember;
 
 export default function() {
 
@@ -11,8 +14,33 @@ export default function() {
   */
   this.urlPrefix = 'http://localhost:5000';
 
-  this.post('/authenticate', () => {
-    return new Mirage.Response(200, { 'Content-Type': 'application/json' }, { success: true, token: 'secret-token' });
+  this.post('/authenticate', ({ users }, request ) => {
+    let body;
+    try {
+      body = JSON.parse(request.requestBody);
+    } catch(err) {
+      Logger.warn(`Error trying to parse ${request.requestBody}`);
+    }
+
+    let response = {
+      status: 200,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        success: false,
+        message: 'Authentication failed'
+      }
+    };
+
+    const user = users.findBy({ email: body.email });
+    if (!user || user.password !== body.password) {
+      return new Mirage.Response(response.status, response.header, response.data);
+    }
+    response.data.success = true;
+    response.data.message = 'Enjoy your token';
+    response.data.token = 'secret-token';
+    return new Mirage.Response(response.status, response.header, response.data);
   });
 
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server

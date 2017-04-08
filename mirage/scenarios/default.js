@@ -1,4 +1,6 @@
-export default function(/* server */) {
+export default function(server) {
+  server.create('user', { email: 'honestly@haremscarem.com', password: 'pass1234' });
+
 
   /*
     Seed your development database using your factories.
