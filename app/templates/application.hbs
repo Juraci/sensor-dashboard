@@ -1,9 +1,10 @@
+<div class='layout-column'>
 {{header-component}}
 <div class='main-content'>
   {{outlet}}
 </div>
-{{footer-component}}
 {{#ember-notify closeAfter=5000 as |message close|}}
   <a {{action close}} class='close'>{{paper-icon "close" size=18}}</a>
   <span class='message-from-block message'>{{message.text}}</span>
 {{/ember-notify}}
+</div>

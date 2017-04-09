@@ -50,13 +50,9 @@ $background: 'light-dark';
 @import 'ember-paper';
 
 body {
-  height: 100%;
+  min-height: 100%;
   background-color: color($primary, '500') !important;
   background-size: 100%;
-};
-
-.main-content {
-  min-height: 100%;
 };
 
 .light-text {
@@ -83,11 +79,4 @@ body {
 
 .message {
   color: color($warn, 'contrast') !important;
-};
-
-footer {
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  position: fixed;
 };
