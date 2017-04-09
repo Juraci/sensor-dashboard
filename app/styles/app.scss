@@ -66,10 +66,16 @@ body, .main-content {
   background-color: color($accent, '100');
 };
 
-.login-error {
-  background-color: color($accent, '100');
+.ember-notify-default .ember-notify {
+ border: 0px;
+};
+
+.alert-notification {
+  div {
+    background-color: color($warn, '500');
+  };
 };
 
 .message {
-  color: color($primary, '500') !important;
+  color: color($warn, 'contrast') !important;
 };

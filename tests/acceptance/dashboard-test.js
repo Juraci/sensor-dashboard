@@ -15,8 +15,8 @@ test('a user can see his dashboard', function(assert) {
   });
 });
 
-test('a user that enters a wrong password or email should see an login error', function(assert) {
-  server.create('user', { email: 'test@test.com', passowrd: 'password1234' });
+test('a user that enters a wrong password or email should stay in the login', function(assert) {
+  server.create('user', { email: 'test@test.com', password: 'password1234' });
   visit('/');
   fillIn('#input-email', 'test@test.com');
   fillIn('#input-password', 'password12');
@@ -24,7 +24,6 @@ test('a user that enters a wrong password or email should see an login error', f
 
   andThen(function() {
     assert.equal(currentURL(), '/login');
-    assert.equal(find('.message').text().trim(), 'Incorrect email or password');
   });
 });
 

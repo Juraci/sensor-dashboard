@@ -3,7 +3,7 @@
   export default Ember.Route.extend({
     authenticator: Ember.inject.service(),
     sessionManager: Ember.inject.service(),
-    flashMessages: Ember.inject.service(),
+    notify: Ember.inject.service(),
 
     actions: {
       didTransition() {
@@ -30,7 +30,7 @@
               this.get('sessionManager').setToken(result.token);
               this.transitionTo('dashboard');
             } else {
-              this.get('flashMessages').danger('Incorrect email or password', { timeout: 5000 });
+              this.get('notify').info('Incorrect email or password');
             }
         });
     },
