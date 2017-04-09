@@ -30,7 +30,9 @@
               this.get('sessionManager').setToken(result.token);
               this.transitionTo('dashboard');
             } else {
-              this.get('notify').info('Incorrect email or password');
+              this.get('notify').alert('Incorrect email or password', {
+                classNames: ['alert-notification']
+              });
             }
         });
     },

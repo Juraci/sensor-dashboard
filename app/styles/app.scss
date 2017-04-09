@@ -71,9 +71,7 @@ body, .main-content {
 };
 
 .alert-notification {
-  div {
-    background-color: color($warn, '500');
-  };
+  background-color: color($warn, '500');
 };
 
 .message {
