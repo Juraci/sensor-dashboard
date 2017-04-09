@@ -28,7 +28,7 @@
               {{#if spinner}}
                 {{paper-progress-circular warn=true diameter=50}}
               {{else}}
-                {{#paper-button id="login" onClick=(route-action 'login') disabled=form.isInvalid raised=true primary=true}}Login{{/paper-button}}
+                {{#form.submit-button id="login" onClick=(route-action 'login') disabled=form.isInvalid raised=true primary=true}}Login{{/form.submit-button}}
               {{/if}}
             </div>
         {{/paper-form}}
