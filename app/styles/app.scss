@@ -49,16 +49,23 @@ $colors: map-merge($colors, (
 $background: 'light-dark';
 @import 'ember-paper';
 
-body, .main-content {
-  background-color: color($primary, '500') !important;
-  width: 100%;
+body {
   height: 100%;
+  background-color: color($primary, '500') !important;
   background-size: 100%;
+};
+
+.main-content {
+  min-height: 100%;
 };
 
 .light-text {
   color: #a6a6a6 !important;
   font-size: 1rem !important;
+};
+
+.accent-text {
+  color: color($accent, '500') !important;
 };
 
 .login-form {
@@ -76,4 +83,11 @@ body, .main-content {
 
 .message {
   color: color($warn, 'contrast') !important;
+};
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  position: absolute;
 };

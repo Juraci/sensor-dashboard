@@ -1,3 +1,4 @@
+<header>
 {{#paper-toolbar}}
   {{#paper-toolbar-tools}}
     {{#link-to 'index'}}
@@ -6,9 +7,11 @@
     <span class="flex"></span>
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
+</header>
 <div class='main-content'>
   {{outlet}}
 </div>
+{{footer-component}}
 {{#ember-notify closeAfter=5000 as |message close|}}
   <a {{action close}} class='close'>{{paper-icon "close" size=18}}</a>
   <span class='message-from-block message'>{{message.text}}</span>
