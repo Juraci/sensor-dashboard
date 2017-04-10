@@ -78,8 +78,7 @@ html, body {
 
 .alert-notification {
   background-color: color($warn, '500');
-};
-
-.message {
-  color: color($warn, 'contrast') !important;
+  .message {
+    color: color($warn, 'contrast') !important;
+  };
 };
