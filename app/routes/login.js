@@ -7,6 +7,12 @@ export default Ember.Route.extend({
   sessionManager: inject.service(),
   notify: inject.service(),
 
+  beforeModel() {
+    if (this.get('sessionManager.isAuthenticated')) {
+      this.transitionTo('dashboard');
+    }
+  },
+
   actions: {
     didTransition() {
       this.controller.set('spinner', false);
