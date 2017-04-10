@@ -1,7 +1,11 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'sensor-dashboard/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | dashboard');
+moduleForAcceptance('Acceptance | dashboard', {
+  beforeEach() {
+    window.localStorage.clear();
+  }
+});
 
 test('a user can see his dashboard', function(assert) {
   server.create('user', { email: 'test@test.com', password: 'password1234' });
