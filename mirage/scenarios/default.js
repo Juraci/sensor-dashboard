@@ -1,6 +1,6 @@
 export default function(server) {
-  server.create('user', { email: 'honestly@haremscarem.com', password: 'pass1234' });
-
+  const user = server.create('user', { email: 'honestly@haremscarem.com', password: 'pass1234' });
+  server.create('sensor', { description: 'living room sensor', boardId: '109812JMA', user });
 
   /*
     Seed your development database using your factories.

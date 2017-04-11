@@ -9,7 +9,7 @@ export default Ember.Route.extend({
 
   beforeModel() {
     if (this.get('sessionManager.isAuthenticated')) {
-      this.transitionTo('dashboard');
+      this.transitionTo('sensors');
     }
   },
 
@@ -35,7 +35,7 @@ export default Ember.Route.extend({
           this.controller.set('spinner', false);
           if(result.success) {
             this.get('sessionManager').setToken(result.token);
-            this.transitionTo('dashboard');
+            this.transitionTo('sensors');
           } else {
             this.get('notify').alert('Incorrect email or password', {
               classNames: ['alert-notification']

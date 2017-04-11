@@ -7,15 +7,16 @@ moduleForAcceptance('Acceptance | dashboard', {
   }
 });
 
-test('a user can see his dashboard', function(assert) {
-  server.create('user', { email: 'test@test.com', password: 'password1234' });
+test('a user can see his sensors', function(assert) {
+  const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
+  server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
   visit('/');
   fillIn('#input-email', 'test@test.com');
   fillIn('#input-password', 'password1234');
   click('#login');
 
   andThen(function() {
-    assert.equal(currentURL(), '/dashboard');
+    assert.equal(find('.sensor').length, 1);
   });
 });
 

@@ -1,6 +1,6 @@
 $primary: 'netflix-dark';
 $accent: 'light-dark';
-$warn: 'red';
+$warn: 'netflix-red';
 
 @import 'color-palette';
 
@@ -41,14 +41,32 @@ $color-light-dark: (
 'contrast': #ffffff
 );
 
+$color-netflix-red: (
+    '50' : #ffffff,
+    '100' : #fdb9bd,
+    '200' : #fc8389,
+    '300' : #fa3d46,
+    '400' : #f91f2a,
+    '500' : #f40612,
+    '600' : #d60510,
+    '700' : #b8050e,
+    '800' : #9a040b,
+    '900' : #7c0309,
+    'A100' : #fffafa,
+    'A200' : #ff9499,
+    'A400' : #ff2e38,
+    'A700' : #ff1420,
+    'contrast': #ffffff
+);
+
 $colors: map-merge($colors, (
 'netflix-dark': $color-netflix-dark,
-'light-dark': $color-light-dark
+'light-dark': $color-light-dark,
+'netflix-red': $color-netflix-red
 ));
 
 $background: 'light-dark';
 @import 'ember-paper';
-
 
 html, body {
   min-height: 100%;
@@ -82,3 +100,7 @@ html, body {
     color: color($warn, 'contrast') !important;
   };
 };
+
+.sensor {
+  background-color: color($accent, '100');
+}

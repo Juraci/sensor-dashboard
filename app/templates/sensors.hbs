@@ -1,0 +1,18 @@
+<div class='layout-row'>
+<div class='flex-30 flex-offset-35 flex-offset-sm-10 flex-sm-80 flex-offset-xs-0 flex-xs-100'>
+    {{#each model as |sensor|}}
+      {{#paper-card class='sensor' as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{sensor.description}}{{/text.headline}}
+            {{#text.subhead}}Large{{/text.subhead}}
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+          {{#paper-button}}Action 1{{/paper-button}}
+          {{#paper-button}}Action 2{{/paper-button}}
+        {{/card.actions}}
+      {{/paper-card}}
+    {{/each}}
+  </div>
+</div>
