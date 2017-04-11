@@ -22,4 +22,9 @@ export default Ember.Service.extend({
     this.set('token', token);
     this.get('localStorage').setItem('token', token);
   },
+
+  unsetToken() {
+    this.set('token', null);
+    this.get('localStorage').removeItem('token');
+  },
 });

@@ -5,6 +5,11 @@
         <h2><strong>SENSORS DASHBOARD</strong></h2>
       {{/link-to}}
       <span class="flex"></span>
+      {{#if logged }}
+        {{#paper-button onClick=(action this.attrs.logout) warn=true id='logout' raised=true}}
+          Logout
+        {{/paper-button}}
+      {{/if}}
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
 </div>

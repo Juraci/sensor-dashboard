@@ -7,7 +7,7 @@ moduleForAcceptance('Acceptance | dashboard', {
   }
 });
 
-test('a user can see his sensors', function(assert) {
+test('an user can see his sensors', function(assert) {
   const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
   server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
   visit('/');
@@ -34,6 +34,25 @@ test('a user that enters a wrong password or email should stay in the login', fu
 
 test('a user that is not authenticated cannot see his dashboard', function(assert) {
   visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/login');
+  });
+});
+
+test('an authenticated user can logout of the app', function(assert) {
+  const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
+  server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
+  visit('/');
+  fillIn('#input-email', 'test@test.com');
+  fillIn('#input-password', 'password1234');
+  click('#login');
+
+  andThen(function() {
+    assert.equal(find('.sensor').length, 1);
+  });
+
+  click('#logout');
 
   andThen(function() {
     assert.equal(currentURL(), '/login');
