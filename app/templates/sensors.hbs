@@ -1,7 +1,11 @@
 <div class='layout-row'>
   <div class='flex-30 flex-offset-35 flex-offset-sm-10 flex-sm-80 flex-offset-xs-0 flex-xs-100'>
-    {{#each model as |sensor|}}
-      {{sensor-item sensor=sensor}}
-    {{/each}}
+    {{#paper-list}}
+      {{#paper-content class="md-whiteframe-z1"}}
+        {{#each model as |sensor|}}
+          {{sensor-item sensor=sensor}}
+        {{/each}}
+      {{/paper-content}}
+    {{/paper-list}}
   </div>
 </div>
