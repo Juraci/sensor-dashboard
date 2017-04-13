@@ -58,3 +58,12 @@ test('an authenticated user can logout of the app', function(assert) {
     assert.equal(currentURL(), '/login');
   });
 });
+
+test('an user with an invalid token should be redirected to the login page', function(assert) {
+  window.localStorage.setItem('token', '127873987KJHDUMEMI');
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/login');
+  });
+});

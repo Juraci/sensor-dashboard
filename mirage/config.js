@@ -14,6 +14,8 @@ export default function() {
   */
   this.urlPrefix = 'http://localhost:5000';
 
+  const token = 'secret-token';
+
   this.post('/authenticate', ({ users }, request ) => {
     let body;
     try {
@@ -43,7 +45,11 @@ export default function() {
     return new Mirage.Response(response.status, response.header, response.data);
   });
 
-  this.get('/sensors', ({ sensors }/*, request*/) => {
+  this.get('/sensors', ({ sensors }, request) => {
+    if (request.requestHeaders['x-access-token'] !== token) {
+      return new Mirage.Response(401, { 'Content-Type': 'Text' }, 'Unauthorized');
+    }
+
     return sensors.all();
   });
 
