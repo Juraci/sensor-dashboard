@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
+const { inject } = Ember;
+
 export default Ember.Route.extend({
-  sessionManager: Ember.inject.service(),
+  sessionManager: inject.service(),
+  notify: inject.service(),
 
   beforeModel() {
     if (!this.get('sessionManager.isAuthenticated')) {
@@ -15,7 +18,34 @@ export default Ember.Route.extend({
         this.get('sessionManager').unsetToken();
         this.replaceWith('login');
       }
-    }
+    },
+
+    createSensor(description, boardId) {
+      this.controller.set('showSensorDialog', false);
+      const sensor = this.store.createRecord('sensor', {
+        description,
+        boardId
+      });
+      sensor.save()
+        .then(() => {
+          this.get('notify').success('Success', {
+            classNames: ['success-notification']
+          });
+        })
+        .catch(() => {
+          this.get('notify').alert('Error while trying to create sensor.', {
+            classNames: ['alert-notification']
+          });
+        });
+    },
+
+    openSensorDialog() {
+      this.controller.set('showSensorDialog', true);
+    },
+
+    closeSensorDialog() {
+      this.controller.set('showSensorDialog', false);
+    },
   },
 
   model() {

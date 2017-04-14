@@ -1,5 +1,10 @@
 <div class='layout-row'>
   <div class='flex-30 flex-offset-35 flex-offset-sm-10 flex-sm-80 flex-offset-xs-0 flex-xs-100'>
+    {{sensor-dialog-form
+      showDialog=showSensorDialog
+      closeDialog=(route-action 'closeSensorDialog')
+      onSubmit=(route-action 'createSensor')
+    }}
     {{#paper-list}}
       {{#paper-content class="md-whiteframe-z1"}}
         {{#each model as |sensor|}}
@@ -7,5 +12,10 @@
         {{/each}}
       {{/paper-content}}
     {{/paper-list}}
+    <div class='layout-row layout-align-center-center'>
+      {{#paper-button id='add-sensor' fab=true raised=true onClick="openSensorDialog"}}
+        {{paper-icon "add" size=24}}
+      {{/paper-button}}
+    </div>
   </div>
 </div>

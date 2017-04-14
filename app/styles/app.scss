@@ -101,10 +101,21 @@ html, body {
   };
 };
 
+.success-notification {
+  background-color: color('green', '500');
+  .message {
+    color: color($warn, 'contrast') !important;
+  };
+};
+
 .sensor {
   background-color: color($accent, '100');
 };
 
 .loading {
   margin-top: 10rem;
+};
+
+.dialog-form {
+  background-color: color($accent, '100');
 };

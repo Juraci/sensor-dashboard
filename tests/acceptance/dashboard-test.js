@@ -7,7 +7,7 @@ moduleForAcceptance('Acceptance | dashboard', {
   }
 });
 
-test('an user can see his sensors', function(assert) {
+test('an user sees his sensors', function(assert) {
   const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
   server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
   visit('/');
@@ -20,3 +20,21 @@ test('an user can see his sensors', function(assert) {
   });
 });
 
+test('an user creates a sensor', function(assert) {
+  server.create('user', { email: 'test@test.com', password: 'password1234' });
+
+  visit('/');
+  fillIn('#input-email', 'test@test.com');
+  fillIn('#input-password', 'password1234');
+  click('#login');
+
+  click('#add-sensor');
+  fillIn('#input-description', 'Entrance sensor');
+  fillIn('#input-boardId', '123874ABFHN');
+  click('#create');
+
+  andThen(function() {
+    assert.equal(find('.sensor').length, 1);
+    assert.equal(find('.sensor:eq(0) .description').text(), 'Entrance sensor');
+  });
+});

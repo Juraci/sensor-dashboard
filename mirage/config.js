@@ -4,19 +4,11 @@ import Mirage from 'ember-cli-mirage';
 const { Logger } = Ember;
 
 export default function() {
-
-  // These comments are here to help you get started. Feel free to delete them.
-
-  /*
-    Config (with defaults).
-
-    Note: these only affect routes defined *after* them!
-  */
   this.urlPrefix = 'http://localhost:5000';
 
   const token = 'secret-token';
 
-  this.post('/authenticate', ({ users }, request ) => {
+  this.post('/authenticate', function({ users }, request ) {
     let body;
     try {
       body = JSON.parse(request.requestBody);
@@ -45,27 +37,26 @@ export default function() {
     return new Mirage.Response(response.status, response.header, response.data);
   });
 
-  this.get('/sensors', ({ sensors }, request) => {
+  this.get('/sensors', function(schema, request) {
     if (request.requestHeaders['x-access-token'] !== token) {
       return new Mirage.Response(401, { 'Content-Type': 'Text' }, 'Unauthorized');
     }
 
-    return sensors.all();
+    const user = schema.users.first();
+
+    return schema.sensors.where({ userId: user.id });
   });
 
-  // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
-  // this.namespace = '';    // make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+  this.post('/sensors', function(schema, request) {
+    if (request.requestHeaders['x-access-token'] !== token) {
+      return new Mirage.Response(401, { 'Content-Type': 'Text' }, 'Unauthorized');
+    }
 
-  /*
-    Shorthand cheatsheet:
+    let user = schema.users.first();
 
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
+    let attrs = this.normalizedRequestAttrs();
+    attrs.userId = user.id;
 
-    http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
-  */
+    return schema.sensors.create(attrs);
+  });
 }
