@@ -9,7 +9,8 @@ export default DS.JSONAPIAdapter.extend({
   sessionManager: inject.service(),
   headers: computed('sessionManager.token', function() {
     return {
-      'x-access-token': this.get('sessionManager.token')
+      'x-access-token': this.get('sessionManager.token'),
+      'Content-Type': 'application/json'
     };
   })
 });
