@@ -1,7 +1,12 @@
-{{#paper-item class='md-3-line sensor accent-box'}}
+{{#paper-item class='md-3-line sensor accent-box' as |controls|}}
   <div class='md-list-item-text'>
     <p class='description'>{{sensor.description}}</p>
   </div>
-  <span style='margin-top:22px;'>Activity {{#paper-button accent=true mini=true}}{{motionAmount}}{{/paper-button}}</span>
+  <div class='md-secondary'>
+    <span>Activity</span>
+    {{#controls.button warn=true fab=true mini=true}}
+      {{motionAmount}}
+    {{/controls.button}}
+  </div>
   {{paper-divider}}
 {{/paper-item}}
