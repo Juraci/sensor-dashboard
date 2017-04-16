@@ -28,12 +28,33 @@ export default Ember.Route.extend({
       });
       sensor.save()
         .then(() => {
-          this.get('notify').success('Success', {
+          this.get('notify').success('Sensor created', {
             classNames: ['success-notification']
           });
         })
         .catch(() => {
           this.get('notify').alert('Error while trying to create sensor.', {
+            classNames: ['alert-notification']
+          });
+        });
+    },
+
+    deleteSensor() {
+      this.controller.set('showDeletionDialog', false);
+      const sensor = this.controller.get('sensorToDelete');
+      if (!sensor) {
+        return;
+      }
+
+      sensor.destroyRecord()
+        .then(() => {
+          this.controller.get('sensorToDelete', null);
+          this.get('notify').success('Sensor deleted.', {
+            classNames: ['success-notification']
+          });
+        })
+        .catch(() => {
+          this.get('notify').alert('Error while trying to delete sensor.', {
             classNames: ['alert-notification']
           });
         });
@@ -45,6 +66,15 @@ export default Ember.Route.extend({
 
     closeSensorDialog() {
       this.controller.set('showSensorDialog', false);
+    },
+
+    openDeletionDialog(sensor) {
+      this.controller.set('showDeletionDialog', true);
+      this.controller.set('sensorToDelete', sensor);
+    },
+
+    closeDeletionDialog() {
+      this.controller.set('showDeletionDialog', false);
     },
   },
 

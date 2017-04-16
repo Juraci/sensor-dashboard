@@ -7,6 +7,10 @@
     {{#controls.button warn=true fab=true mini=true}}
       {{motionAmount}}
     {{/controls.button}}
+    {{#controls.button iconButton=true class='delete' onClick=(action this.attrs.onDeleteAction sensor)}}
+      {{paper-icon 'Delete'}}
+    {{/controls.button}}
   </div>
   {{paper-divider}}
 {{/paper-item}}
+

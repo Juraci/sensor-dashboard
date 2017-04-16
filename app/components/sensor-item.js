@@ -26,5 +26,5 @@ export default Ember.Component.extend({
 
       Ember.Logger.error(`SSE error ${e}`);
     };
-  }
+  },
 });

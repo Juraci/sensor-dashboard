@@ -38,3 +38,19 @@ test('the user creates a sensor', function(assert) {
     assert.equal(find('.sensor:eq(0) .description').text(), 'Entrance sensor');
   });
 });
+
+test('the user deletes a sensor', function(assert) {
+  const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
+  server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
+  visit('/');
+  fillIn('#input-email', 'test@test.com');
+  fillIn('#input-password', 'password1234');
+  click('#login');
+
+  click('.sensor:eq(0) .delete');
+  click('#confirm');
+
+  andThen(function() {
+    assert.equal(find('.sensor').length, 0);
+  });
+});

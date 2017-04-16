@@ -12,9 +12,12 @@ test('it renders', function(assert) {
     boardId: '183FKD78d7SD',
   });
 
-  this.set('sensor', sensor);
+  const deleteAction = () => {};
 
-  this.render(hbs`{{sensor-item sensor=sensor}}`);
+  this.set('sensor', sensor);
+  this.set('showDeletionDialog', deleteAction);
+
+  this.render(hbs`{{sensor-item sensor=sensor onDeleteAction=showDeletionDialog}}`);
 
   assert.equal(this.$('.description').text(), 'entrance hall');
 });
