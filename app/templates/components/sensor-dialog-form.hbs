@@ -1,6 +1,6 @@
 {{#if showDialog}}
   {{#paper-dialog class='flex-30 flex-sm-offset-0 flex-sm-100 flex-xs-offset-0 flex-xs-100' fullscreen=false clickOutsideToClose=true onClose=(action 'close')}}
-    {{#paper-form class='dialog-form' as |form|}}
+    {{#paper-form class='dialog-form accent-box' as |form|}}
       {{#paper-dialog-content}}
         {{form.input id='description' required=true label='Description' maxlength=40 block=true value=description onChange=(action (mut description))}}
         {{form.input id='boardId' required=true label='Board id' maxlength=36 block=true value=boardId onChange=(action (mut boardId))}}

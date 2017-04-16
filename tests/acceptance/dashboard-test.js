@@ -7,7 +7,7 @@ moduleForAcceptance('Acceptance | dashboard', {
   }
 });
 
-test('an user sees his sensors', function(assert) {
+test('the user sees his sensors', function(assert) {
   const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
   server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
   visit('/');
@@ -20,7 +20,7 @@ test('an user sees his sensors', function(assert) {
   });
 });
 
-test('an user creates a sensor', function(assert) {
+test('the user creates a sensor', function(assert) {
   server.create('user', { email: 'test@test.com', password: 'password1234' });
 
   visit('/');
