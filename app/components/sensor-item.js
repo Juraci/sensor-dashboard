@@ -5,6 +5,7 @@ const { computed } = Ember;
 
 export default Ember.Component.extend({
   messages: null,
+  source: null,
   motionAmount: computed('messages.length', function() {
     return this.get('messages.length');
   }),
@@ -26,5 +27,13 @@ export default Ember.Component.extend({
 
       Ember.Logger.error(`SSE error ${e}`);
     };
+
+    this.set('source', source);
+  },
+
+
+  willDestroyElement() {
+    this._super(...arguments);
+    this.get('source').close();
   },
 });
