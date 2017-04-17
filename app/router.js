@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('dashboard');
   this.route('login');
   this.route('sensors');
   this.route('sensors-loading');
