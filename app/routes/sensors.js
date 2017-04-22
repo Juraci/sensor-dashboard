@@ -14,6 +14,7 @@ export default Ember.Route.extend({
 
   actions: {
     error(error) {
+      Ember.Logger.warn(error);
       if (error.errors[0].status === '401') {
         this.get('sessionManager').unsetToken();
         this.replaceWith('login');
@@ -75,6 +76,11 @@ export default Ember.Route.extend({
 
     closeDeletionDialog() {
       this.controller.set('showDeletionDialog', false);
+    },
+
+    openAlerts(sensor) {
+      this.controller.set('alerts', true);
+      this.controller.set('currentSensor', sensor);
     },
   },
 

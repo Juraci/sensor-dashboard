@@ -12,17 +12,47 @@
       onConfirm=(route-action 'deleteSensor')
     }}
     {{#paper-list}}
-      {{#paper-content class="md-whiteframe-z1"}}
+      {{#paper-content class='md-whiteframe-z1'}}
         {{#each model as |sensor|}}
-          {{sensor-item sensor=sensor onDeleteAction=(route-action 'openDeletionDialog')}}
+          {{sensor-item
+            sensor=sensor
+            onDeleteAction=(route-action 'openDeletionDialog')
+            onNotificationAction=(route-action 'openAlerts')
+          }}
         {{/each}}
       {{/paper-content}}
     {{/paper-list}}
     <div class='layout-row layout-align-center-center'>
       {{#paper-button id='add-sensor' fab=true raised=true onClick='openSensorDialog'}}
-        {{paper-icon "add" size=24}}
+        {{paper-icon 'add' size=24}}
       {{/paper-button}}
     </div>
   </div>
 </div>
-
+{{#paper-sidenav
+  class='md-whiteframe-z2'
+  position='right'
+  name='alerts'
+  open=alerts
+  onToggle=(action (mut alerts))
+  lockedOpen=false
+  closeOnClick=false
+}}
+  {{#paper-toolbar as |toolbar|}}
+    {{#paper-toolbar-tools}}{{currentSensor.description}} - Alerts{{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+  {{#paper-content padding=false}}
+    {{#paper-list}}
+      {{#paper-content class='md-whiteframe-z1'}}
+        {{#each currentSensor.alerts as |alert|}}
+          {{alert-item alert=alert}}
+        {{else}}
+          {{#paper-item class='alert accent-box'}}
+            <p class='message'>No alerts.</p>
+            {{paper-divider}}
+          {{/paper-item}}
+        {{/each}}
+      {{/paper-content}}
+    {{/paper-list}}
+  {{/paper-content}}
+{{/paper-sidenav}}
