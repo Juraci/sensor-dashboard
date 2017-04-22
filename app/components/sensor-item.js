@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Config from 'sensor-dashboard/config/environment';
+//import Config from 'sensor-dashboard/config/environment';
 
 const { computed } = Ember;
 
@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   init() {
     this._super(...arguments);
     this.set('messages', []);
-    const source = new EventSource(`${Config.APP.sse}/cards/${this.get('sensor.boardId')}/stream`);
+    /*const source = new EventSource(`${Config.APP.sse}/cards/${this.get('sensor.boardId')}/stream`);
     source.onmessage =  (e) => {
       if(e.data !== 'sse ready') {
         this.get('messages').pushObject(e.data);
@@ -28,12 +28,12 @@ export default Ember.Component.extend({
       Ember.Logger.error(`SSE error ${e}`);
     };
 
-    this.set('source', source);
+    this.set('source', source);*/
   },
 
 
   willDestroyElement() {
     this._super(...arguments);
-    this.get('source').close();
+    //this.get('source').close();
   },
 });
