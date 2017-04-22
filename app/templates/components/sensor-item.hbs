@@ -3,10 +3,15 @@
     <p class='description'>{{sensor.description}}</p>
   </div>
   <div class='md-secondary'>
-    <span>Activity</span>
-    {{#controls.button warn=true fab=true mini=true}}
-      {{motionAmount}}
-    {{/controls.button}}
+    {{#if hasNotifications}}
+      {{#controls.button class='notifications' warn=true fab=true mini=true}}
+        {{paper-icon 'notifications'}}
+      {{/controls.button}}
+    {{else}}
+      {{#controls.button class='notifications-none' iconButton=true}}
+        {{paper-icon 'notifications-none'}}
+      {{/controls.button}}
+    {{/if}}
     {{#controls.button iconButton=true class='delete' onClick=(action this.attrs.onDeleteAction sensor)}}
       {{paper-icon 'Delete'}}
     {{/controls.button}}

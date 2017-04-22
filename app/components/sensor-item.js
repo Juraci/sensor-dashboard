@@ -4,15 +4,13 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Component.extend({
-  messages: null,
   source: null,
-  motionAmount: computed('messages.length', function() {
-    return this.get('messages.length');
+  hasNotifications: computed('sensor.alerts.length', function() {
+    return this.get('sensor.alerts.length') > 0;
   }),
 
   init() {
     this._super(...arguments);
-    this.set('messages', []);
     /*const source = new EventSource(`${Config.APP.sse}/cards/${this.get('sensor.boardId')}/stream`);
     source.onmessage =  (e) => {
       if(e.data !== 'sse ready') {
