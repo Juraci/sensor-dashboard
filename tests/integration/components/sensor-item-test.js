@@ -22,15 +22,17 @@ test('it renders', function(assert) {
   assert.equal(this.$('.description').text(), 'entrance hall');
 });
 
-test('it should call the on delete action when clicked', function(assert) {
+test('it should call the onDeleteAction passing the sensor when clicked', function(assert) {
+  assert.expect(2);
+
   const sensor = Ember.Object.create({
     description: 'entrance hall',
     boardId: '183FKD78d7SD',
   });
 
-  let actionCalled = false;
-  const deleteAction = () => {
-    actionCalled = true;
+  const deleteAction = (sensorParam) => {
+    assert.equal(sensorParam.boardId, sensor.boardId);
+    assert.equal(sensorParam.description, sensor.description);
   };
 
   this.set('sensor', sensor);
@@ -39,5 +41,4 @@ test('it should call the on delete action when clicked', function(assert) {
   this.render(hbs`{{sensor-item sensor=sensor onDeleteAction=showDeletionDialog}}`);
 
   this.$('.delete').click();
-  assert.ok(actionCalled);
 });
