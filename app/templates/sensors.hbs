@@ -30,7 +30,7 @@
   </div>
 </div>
 {{#paper-sidenav
-  class='md-whiteframe-z2'
+  class='md-whiteframe-z2 side-alerts'
   position='right'
   name='alerts'
   open=alerts
@@ -38,7 +38,7 @@
   lockedOpen=false
   closeOnClick=false
 }}
-  {{#paper-toolbar as |toolbar|}}
+  {{#paper-toolbar warn=true as |toolbar|}}
     {{#paper-toolbar-tools}}{{currentSensor.description}} - Alerts{{/paper-toolbar-tools}}
   {{/paper-toolbar}}
   {{#paper-content padding=false}}
