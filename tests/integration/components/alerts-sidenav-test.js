@@ -25,7 +25,7 @@ test('it renders the alerts', function(assert) {
   assert.equal(this.$('.alert:eq(0) .message').text(), alert.get('message'));
 });
 
-test('it renders the alerts ordered by ascending date', function(assert) {
+test('it renders the alerts ordered by descending date', function(assert) {
   const alert = Ember.Object.create({
     message: 'motion Motion 23/04/2017, 7:11:11 pm',
     seen: false,

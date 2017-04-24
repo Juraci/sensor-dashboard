@@ -73,7 +73,7 @@ test('the user sees alerts for a given sensor', function(assert) {
   });
 });
 
-test('alerts are sorted by ascending date', function(assert) {
+test('alerts are sorted by descending date', function(assert) {
   const user =  server.create('user', { email: 'test@test.com', password: 'password1234' });
   const sensor = server.create('sensor', { description: 'living room sensor', boardId: '100837', user });
   const alert1 = server.create('alert', {
