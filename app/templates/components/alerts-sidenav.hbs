@@ -1,0 +1,27 @@
+{{#paper-sidenav
+  class='md-whiteframe-z2 side-alerts'
+  position='right'
+  name='alerts'
+  open=open
+  onToggle=(action (mut open))
+  lockedOpen=false
+  closeOnClick=false
+}}
+  {{#paper-toolbar warn=true as |toolbar|}}
+    {{#paper-toolbar-tools}}{{sensor.description}} - Alerts{{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+  {{#paper-content padding=false}}
+    {{#paper-list}}
+      {{#paper-content class='md-whiteframe-z1'}}
+        {{#each sortedAlerts as |alert|}}
+          {{alert-item alert=alert}}
+        {{else}}
+          {{#paper-item class='alert accent-box'}}
+            <p class='message'>No alerts.</p>
+            {{paper-divider}}
+          {{/paper-item}}
+        {{/each}}
+      {{/paper-content}}
+    {{/paper-list}}
+  {{/paper-content}}
+{{/paper-sidenav}}
