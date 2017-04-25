@@ -5,8 +5,11 @@ const { computed } = Ember;
 
 export default Ember.Component.extend({
   source: null,
-  hasNotifications: computed('sensor.alerts.length', function() {
-    return this.get('sensor.alerts.length') > 0;
+  notifications: computed('sensor.alerts.length', function() {
+    return this.get('sensor.alerts.length');
+  }),
+  hasNotifications: computed('notifications', function() {
+    return this.get('notifications') > 0;
   }),
 
   init() {

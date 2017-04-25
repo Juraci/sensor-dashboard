@@ -5,7 +5,7 @@
   <div class='md-secondary'>
     {{#if hasNotifications}}
       {{#controls.button class='notifications' onClick=(action this.attrs.onNotificationAction sensor) warn=true fab=true mini=true}}
-        {{paper-icon 'notifications'}}
+        {{notifications}}
       {{/controls.button}}
     {{else}}
       {{#controls.button class='notifications-none' onClick=(action this.attrs.onNotificationAction sensor) iconButton=true}}
