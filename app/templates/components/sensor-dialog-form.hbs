@@ -1,5 +1,12 @@
 {{#if showDialog}}
   {{#paper-dialog class='flex-30 flex-sm-offset-0 flex-sm-100 flex-xs-offset-0 flex-xs-100' fullscreen=false clickOutsideToClose=true onClose=(action 'close')}}
+    {{#paper-toolbar warn=true}}
+      {{#paper-toolbar-tools}}
+        <h2>Create Sensor</h2>
+        <span class='flex'></span>
+        {{#paper-button iconButton=true onClick=(action 'close')}}{{paper-icon icon='close'}}{{/paper-button}}
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
     {{#paper-form class='dialog-form accent-box' as |form|}}
       {{#paper-dialog-content}}
         {{form.input id='description' required=true label='Description' maxlength=40 block=true value=description onChange=(action (mut description))}}
@@ -7,10 +14,10 @@
       {{/paper-dialog-content}}
       {{#paper-dialog-actions}}
         {{#paper-button primary=true onClick=(action 'close')}}cancel{{/paper-button}}
-          {{#form.submit-button primary=true id='create' disabled=form.isInvalid onClick=(action 'submit' description boardId)}}
-            Create
-          {{/form.submit-button}}
-        {{/paper-dialog-actions}}
+        {{#form.submit-button primary=true id='create' disabled=form.isInvalid onClick=(action 'submit' description boardId)}}
+          Create
+        {{/form.submit-button}}
+      {{/paper-dialog-actions}}
     {{/paper-form}}
   {{/paper-dialog}}
 {{/if}}
