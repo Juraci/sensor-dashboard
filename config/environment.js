@@ -32,7 +32,7 @@ module.exports = function(environment) {
     ENV.APP.sse = 'http://localhost:3000';
     ENV.APP.sensorsManagement = 'http://localhost:5000';
     ENV['ember-cli-mirage'] = {
-      enabled: true
+      enabled: false
     };
   }
 

@@ -5,6 +5,7 @@ const { inject } = Ember;
 export default Ember.Route.extend({
   sessionManager: inject.service(),
   notify: inject.service(),
+  sseToStore: inject.service(),
 
   beforeModel() {
     if (!this.get('sessionManager.isAuthenticated')) {
@@ -87,6 +88,10 @@ export default Ember.Route.extend({
       sensor.get('alerts').forEach((alert) => {
         alert.destroyRecord();
       });
+    },
+
+    createAlert(sensor, rawAlert) {
+      this.get('sseToStore').add(sensor, rawAlert);
     },
   },
 
