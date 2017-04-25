@@ -10,18 +10,18 @@
   {{#paper-toolbar warn=true as |toolbar|}}
     {{#paper-toolbar-tools}}{{sensor.description}} - Alerts{{/paper-toolbar-tools}}
   {{/paper-toolbar}}
+  {{#if sortedAlerts}}
+    <div class='layout-row layout-align-center-center'>
+      {{#paper-button warn=true id='delete-all' raised=false onClick=(action this.attrs.onDelete sensor)}}Delete All{{/paper-button}}
+    </div>
+  {{/if}}
   {{#paper-content padding=false}}
     {{#paper-list}}
-      {{#paper-content class='md-whiteframe-z1'}}
-        {{#each sortedAlerts as |alert|}}
-          {{alert-item alert=alert}}
-        {{else}}
-          {{#paper-item class='alert accent-box'}}
-            <p class='message'>No alerts.</p>
-            {{paper-divider}}
-          {{/paper-item}}
-        {{/each}}
-      {{/paper-content}}
+      {{#each sortedAlerts as |alert|}}
+        {{alert-item alert=alert}}
+      {{else}}
+        {{no-alerts-item}}
+      {{/each}}
     {{/paper-list}}
   {{/paper-content}}
 {{/paper-sidenav}}

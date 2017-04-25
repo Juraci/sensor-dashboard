@@ -7,6 +7,7 @@ moduleForComponent('alerts-sidenav', 'Integration | Component | alerts sidenav',
 });
 
 test('it renders the alerts', function(assert) {
+  const deleteAction = () => {};
   const alert = Ember.Object.create({
     message: 'motion Motion 23/04/2017, 7:11:11 pm',
     seen: false,
@@ -19,13 +20,15 @@ test('it renders the alerts', function(assert) {
   });
 
   this.set('sensor', sensor);
+  this.set('deleteAction', deleteAction);
 
-  this.render(hbs`{{alerts-sidenav open=true sensor=sensor}}`);
+  this.render(hbs`{{alerts-sidenav open=true sensor=sensor onDelete=deleteAction}}`);
 
   assert.equal(this.$('.alert:eq(0) .message').text(), alert.get('message'));
 });
 
 test('it renders the alerts ordered by descending date', function(assert) {
+  const deleteAction = () => {};
   const alert = Ember.Object.create({
     message: 'motion Motion 23/04/2017, 7:11:11 pm',
     seen: false,
@@ -43,8 +46,9 @@ test('it renders the alerts ordered by descending date', function(assert) {
   });
 
   this.set('sensor', sensor);
+  this.set('deleteAction', deleteAction);
 
-  this.render(hbs`{{alerts-sidenav open=true sensor=sensor}}`);
+  this.render(hbs`{{alerts-sidenav open=true sensor=sensor onDelete=deleteAction}}`);
 
   assert.equal(this.$('.alert:eq(0) .message').text(), alert2.get('message'));
   assert.equal(this.$('.alert:eq(1) .message').text(), alert.get('message'));

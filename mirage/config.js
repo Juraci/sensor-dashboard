@@ -69,4 +69,14 @@ export default function() {
 
     return schema.sensors.find(id).destroy();
   });
+
+  this.delete('/alerts/:id', function(schema, request) {
+    if (request.requestHeaders['x-access-token'] !== token) {
+      return new Mirage.Response(401, { 'Content-Type': 'Text' }, 'Unauthorized');
+    }
+
+    const id = request.params.id;
+
+    return schema.alerts.find(id).destroy();
+  });
 }

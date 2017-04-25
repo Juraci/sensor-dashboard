@@ -82,6 +82,12 @@ export default Ember.Route.extend({
       this.controller.set('alerts', true);
       this.controller.set('currentSensor', sensor);
     },
+
+    deleteAllAlerts(sensor) {
+      sensor.get('alerts').forEach((alert) => {
+        alert.destroyRecord();
+      });
+    },
   },
 
   model() {
