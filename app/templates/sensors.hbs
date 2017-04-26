@@ -19,15 +19,17 @@
             onDeleteAction=(route-action 'openDeletionDialog')
             onNotificationAction=(route-action 'openAlerts')
             onCreateAction=(route-action 'createAlert')
-          }}
-        {{/each}}
-      {{/paper-content}}
-    {{/paper-list}}
-    <div class='layout-row layout-align-center-center'>
-      {{#paper-button id='add-sensor' fab=true raised=true onClick='openSensorDialog'}}
-        {{paper-icon 'add' size=24}}
-      {{/paper-button}}
-    </div>
+            }}
+          {{else}}
+            {{no-sensor-item}}
+          {{/each}}
+        {{/paper-content}}
+      {{/paper-list}}
+      <div class='layout-row layout-align-center-center'>
+        {{#paper-button id='add-sensor' fab=true raised=true onClick='openSensorDialog'}}
+          {{paper-icon 'add' size=24}}
+        {{/paper-button}}
+      </div>
   </div>
 </div>
 {{alerts-sidenav sensor=currentSensor open=alerts onDelete=(route-action 'deleteAllAlerts')}}
