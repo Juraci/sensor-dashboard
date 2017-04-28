@@ -8,13 +8,13 @@ export default Ember.Service.extend({
 
   init() {
     this._super(...arguments);
-    this.set('counter', Math.floor((Math.random() * 10000000) + 1));
+    this.set('counter', 0);
   },
 
   add(sensor, rawAlert) {
     this.get('store').push({
       data: [{
-        id: this.get('counter'),
+        id: `local${this.get('counter')}`,
         type: 'alert',
         attributes: {
           message: rawAlert.message,
