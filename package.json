@@ -42,7 +42,7 @@
     "loader.js": "^4.2.3"
   },
   "engines": {
-    "node": ">= 6"
+    "node": "6"
   },
   "private": true
 }
