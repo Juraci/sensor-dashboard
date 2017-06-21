@@ -1,10 +1,10 @@
 {{#if showDialog}}
   {{#paper-dialog class='flex-30 flex-sm-offset-0 flex-sm-100 flex-xs-offset-0 flex-xs-100' fullscreen=false clickOutsideToClose=true onClose=(action 'close') origin=dialogOrigin}}
-    {{#paper-dialog-content}}
+    {{#paper-dialog-content class='accent-box'}}
       <h2 class="md-title">{{prompt}}</h2>
     {{/paper-dialog-content}}
 
-    {{#paper-dialog-actions class="layout-row"}}
+    {{#paper-dialog-actions class="layout-row accent-box"}}
       <span class="flex"></span>
       {{#paper-button primary=true onClick=(action 'close') }}Cancel{{/paper-button}}
       {{#paper-button id='confirm' warn=true onClick=(action 'confirm') }}Delete{{/paper-button}}
