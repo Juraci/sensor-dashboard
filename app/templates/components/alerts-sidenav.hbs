@@ -19,6 +19,7 @@
     {{#paper-list}}
       {{#each sortedAlerts as |alert|}}
         {{alert-item alert=alert}}
+        {{paper-divider class='side-alerts'}}
       {{else}}
         {{no-alerts-item}}
       {{/each}}
