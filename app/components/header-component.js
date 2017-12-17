@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 
-const { inject, computed } = Ember;
-
-export default Ember.Component.extend({
-  sessionManager: inject.service(),
+export default Component.extend({
+  sessionManager: service(),
   logged: computed('sessionManager.isAuthenticated', function() {
     return this.get('sessionManager.isAuthenticated');
   }),

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -8,12 +8,12 @@ moduleForComponent('alerts-sidenav', 'Integration | Component | alerts sidenav',
 
 test('it renders the alerts', function(assert) {
   const deleteAction = () => {};
-  const alert = Ember.Object.create({
+  const alert = EmberObject.create({
     message: 'motion Motion 23/04/2017, 7:11:11 pm',
     seen: false,
     createdAt: '2017-04-23T22:11:11.193Z',
   });
-  const sensor = Ember.Object.create({
+  const sensor = EmberObject.create({
     description: 'entrance gateway',
     alerts: [alert],
     boardId: '16787216BS',
@@ -29,17 +29,17 @@ test('it renders the alerts', function(assert) {
 
 test('it renders the alerts ordered by descending date', function(assert) {
   const deleteAction = () => {};
-  const alert = Ember.Object.create({
+  const alert = EmberObject.create({
     message: 'motion Motion 23/04/2017, 7:11:11 pm',
     seen: false,
     createdAt: '2017-04-23T22:11:11.193Z',
   });
-  const alert2 = Ember.Object.create({
+  const alert2 = EmberObject.create({
     message: 'motion Motion 23/04/2017, 7:11:50 pm',
     seen: false,
     createdAt: '2017-04-23T22:11:50.193Z',
   });
-  const sensor = Ember.Object.create({
+  const sensor = EmberObject.create({
     description: 'entrance gateway',
     alerts: [alert, alert2],
     boardId: '16787216BS',

@@ -1,9 +1,8 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import Config from 'sensor-dashboard/config/environment';
 
-const { computed } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   source: null,
   notifications: computed('sensor.alerts.length', function() {
     return this.get('sensor.alerts.length');
@@ -25,8 +24,7 @@ export default Ember.Component.extend({
       if (source.readyState === EventSource.CLOSED) {
         return;
       }
-
-      Ember.Logger.error(`SSE error ${e}`);
+      console.error(e) // eslint-disable-line
     };
 
     this.set('source', source);

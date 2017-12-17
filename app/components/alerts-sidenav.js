@@ -1,7 +1,6 @@
-import Ember from 'ember';
-
-const { computed } = Ember;
-export default Ember.Component.extend({
+import { sort } from '@ember/object/computed';
+import Component from '@ember/component';
+export default Component.extend({
   sortingKey:['createdAt:desc'],
-  sortedAlerts: computed.sort('sensor.alerts', 'sortingKey'),
+  sortedAlerts: sort('sensor.alerts', 'sortingKey'),
 });

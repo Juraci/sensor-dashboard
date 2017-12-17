@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -12,11 +12,11 @@ moduleForComponent('sensor-item', 'Integration | Component | sensor item', {
   beforeEach() {
     deleteAction = () => {};
     openNotification = () => {};
-    alert = Ember.Object.create({
+    alert = EmberObject.create({
       message: 'motion 31/12/1997 10:28:43 am',
       seen: false,
     });
-    sensor = Ember.Object.create({
+    sensor = EmberObject.create({
       description: 'entrance hall',
       boardId: '183FKD78d7SD',
       alerts: [],

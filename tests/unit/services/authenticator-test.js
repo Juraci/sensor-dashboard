@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { Promise as EmberPromise } from 'rsvp';
+import EmberObject from '@ember/object';
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('service:authenticator', 'Unit | Service | authenticator', {
@@ -6,14 +7,14 @@ moduleFor('service:authenticator', 'Unit | Service | authenticator', {
 });
 
 test('it delegates the post request to ajax service', function(assert) {
-  const ajax = Ember.Object.create({
+  const ajax = EmberObject.create({
     uri: null,
 
     request(uri, { method, data }) {
       this.set('uri', uri);
       this.set('method', method);
       this.set('data', data);
-      return Ember.RSVP.Promise.resolve({ success: true });
+      return EmberPromise.resolve({ success: true });
     }
   });
 

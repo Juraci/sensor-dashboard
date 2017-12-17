@@ -1,11 +1,10 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-const { inject } = Ember;
-
-export default Ember.Route.extend({
-  sessionManager: inject.service(),
-  notify: inject.service(),
-  sseToStore: inject.service(),
+export default Route.extend({
+  sessionManager: service(),
+  notify: service(),
+  sseToStore: service(),
 
   beforeModel() {
     if (!this.get('sessionManager.isAuthenticated')) {
@@ -15,7 +14,6 @@ export default Ember.Route.extend({
 
   actions: {
     error(error) {
-      Ember.Logger.warn(error);
       if (error.errors[0].status === '401') {
         this.get('sessionManager').unsetToken();
         this.replaceWith('login');

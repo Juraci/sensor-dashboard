@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 import Config from 'sensor-dashboard/config/environment';
 
-export default Ember.Service.extend({
-  ajax: Ember.inject.service(),
+export default Service.extend({
+  ajax: service(),
   baseUrl: Config.APP.sensorsManagement,
 
   authenticate(email, password) {
